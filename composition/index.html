@@ -1,0 +1,1054 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>NCU Three-Year Board Plan</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Aptos";
+        src: local("Aptos");
+        font-weight: 400;
+      }
+      @font-face {
+        font-family: "Aptos";
+        src: local("Aptos Display Bold"), local("Aptos Bold");
+        font-weight: 700;
+      }
+      :root {
+        --paper: #F4F0E7;
+        --navy: #1F3864;
+        --gold: #9C6F1E;
+        --ink: #24282D;
+        --muted: #67717E;
+        --pale-blue: #DDE6F0;
+        --pale-gold: #EBDDBA;
+      }
+
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: Aptos, Arial, sans-serif;
+      }
+
+      .scene {
+        position: absolute;
+        inset: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .slide-surface {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        background: var(--paper);
+      }
+
+      .frame {
+        position: absolute;
+        inset: 0;
+        padding: 78px 108px 82px;
+      }
+
+      .topline {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--navy);
+        font-size: 23px;
+        font-weight: 700;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+      }
+
+      .rule-grow {
+        width: 100%;
+        height: 2px;
+        margin-top: 20px;
+        background: var(--navy);
+      }
+
+      .claim {
+        margin: 42px 0 0;
+        max-width: 1510px;
+        color: var(--navy);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 76px;
+        font-weight: 400;
+        line-height: 1.08;
+        letter-spacing: -.025em;
+      }
+
+      .claim.wide { max-width: 1650px; }
+      .claim.compact { max-width: 1260px; font-size: 68px; }
+
+      .subclaim {
+        max-width: 1150px;
+        color: var(--ink);
+        font-size: 34px;
+        line-height: 1.35;
+      }
+
+      .label {
+        color: var(--gold);
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+      }
+
+      .metric {
+        color: var(--navy);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 134px;
+        line-height: .9;
+        letter-spacing: -.05em;
+      }
+
+      .metric.small { font-size: 96px; }
+      .metric.gold { color: var(--gold); }
+
+      .metric-caption {
+        margin-top: 18px;
+        max-width: 420px;
+        color: var(--ink);
+        font-size: 30px;
+        line-height: 1.25;
+      }
+
+      .footnote {
+        position: absolute;
+        left: 108px;
+        right: 420px;
+        bottom: 42px;
+        display: flex;
+        justify-content: space-between;
+        color: var(--muted);
+        font-size: 20px;
+        letter-spacing: .04em;
+      }
+
+      .ghost {
+        position: absolute;
+        color: var(--pale-blue);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 430px;
+        line-height: 1;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .gold-block { background: var(--gold); }
+      .navy-block { background: var(--navy); }
+      .pale-blue-block { background: var(--pale-blue); }
+      .pale-gold-block { background: var(--pale-gold); }
+
+      .outline-box {
+        border: 2px solid var(--navy);
+        background: var(--paper);
+      }
+
+      .report-note {
+        color: var(--muted);
+        font-size: 22px;
+        line-height: 1.3;
+      }
+
+      /* Slide 1 */
+      #opening .navy-field {
+        position: absolute;
+        inset: 0 740px 0 0;
+        background: var(--navy);
+      }
+      #opening .opening-copy {
+        position: absolute;
+        left: 118px;
+        top: 128px;
+        width: 980px;
+        color: var(--paper);
+      }
+      #opening .opening-kicker {
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        color: var(--pale-gold);
+      }
+      #opening h1 {
+        margin: 92px 0 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 94px;
+        font-weight: 400;
+        line-height: 1.05;
+        letter-spacing: -.03em;
+      }
+      #opening .opening-sub {
+        margin-top: 46px;
+        width: 760px;
+        font-size: 31px;
+        line-height: 1.35;
+        color: var(--pale-blue);
+      }
+      #opening .monogram {
+        position: absolute;
+        right: -58px;
+        top: 115px;
+        color: var(--pale-blue);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 330px;
+        letter-spacing: -.12em;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+      }
+      #opening .gold-disc {
+        position: absolute;
+        right: 145px;
+        bottom: 110px;
+        width: 220px;
+        height: 220px;
+        border: 34px solid var(--gold);
+        border-radius: 50%;
+      }
+      #opening .opening-meta {
+        position: absolute;
+        right: 118px;
+        top: 88px;
+        width: 430px;
+        color: var(--navy);
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+      }
+
+      /* Slide 2 */
+      #starting-point .facts {
+        display: grid;
+        grid-template-columns: 1fr 1fr .78fr;
+        gap: 34px;
+        margin-top: 72px;
+        align-items: end;
+      }
+      #starting-point .fact {
+        min-height: 300px;
+        padding: 38px 0 0;
+        border-top: 8px solid var(--navy);
+      }
+      #starting-point .fact:nth-child(2) { border-color: var(--gold); }
+      #starting-point .fact:nth-child(3) {
+        min-height: 230px;
+        padding: 44px;
+        border: 2px solid var(--navy);
+        background: var(--pale-blue);
+      }
+      #starting-point .fact-title {
+        margin-top: 28px;
+        color: var(--ink);
+        font-size: 29px;
+        line-height: 1.25;
+      }
+      #starting-point .fact:nth-child(3) .metric { font-size: 82px; }
+
+      /* Slide 3 */
+      #three-year-path .path {
+        position: absolute;
+        left: 126px;
+        right: 126px;
+        top: 487px;
+        height: 3px;
+        background: var(--navy);
+      }
+      #three-year-path .year {
+        position: absolute;
+        top: 470px;
+        width: 470px;
+      }
+      #three-year-path .year.y1 { left: 116px; }
+      #three-year-path .year.y2 { left: 724px; }
+      #three-year-path .year.y3 { right: 116px; }
+      #three-year-path .dot {
+        width: 34px;
+        height: 34px;
+        margin-bottom: 34px;
+        border: 8px solid var(--paper);
+        outline: 3px solid var(--navy);
+        border-radius: 50%;
+        background: var(--gold);
+      }
+      #three-year-path .year-title {
+        color: var(--navy);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 48px;
+      }
+      #three-year-path .year-copy {
+        margin-top: 18px;
+        color: var(--ink);
+        font-size: 29px;
+        line-height: 1.3;
+      }
+      #three-year-path .year-number {
+        position: absolute;
+        top: 0;
+        left: 54px !important;
+        color: var(--gold);
+        font-family: Aptos, Arial, sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 1;
+      }
+      #three-year-path .y1 .year-number { left: 0; }
+      #three-year-path .y2 .year-number { left: 0; }
+      #three-year-path .y3 .year-number { left: 0; }
+
+      /* Slide 4 */
+      #property .property-grid {
+        display: grid;
+        grid-template-columns: .9fr 1.1fr;
+        gap: 86px;
+        margin-top: 62px;
+      }
+      #property .range-panel {
+        padding: 46px 48px;
+        border: 2px solid var(--navy);
+      }
+      #property .range-label {
+        color: var(--gold);
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+      }
+      #property .range-number {
+        margin-top: 34px;
+        color: var(--navy);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 96px;
+        line-height: 1;
+        letter-spacing: -.04em;
+      }
+      #property .range-note {
+        margin-top: 32px;
+        color: var(--ink);
+        font-size: 28px;
+        line-height: 1.3;
+      }
+      #property .use-list { display: grid; gap: 18px; }
+      #property .use-row {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        align-items: center;
+        min-height: 92px;
+        border-bottom: 2px solid var(--pale-blue);
+      }
+      #property .use-n {
+        color: var(--gold);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 48px;
+      }
+      #property .use-copy {
+        color: var(--navy);
+        font-size: 31px;
+        font-weight: 700;
+      }
+
+      /* Slide 5 */
+      #graduate-model .price-lockup {
+        position: absolute;
+        left: 108px;
+        top: 406px;
+        width: 420px;
+        padding: 36px 34px 34px;
+        border: 3px solid var(--gold);
+      }
+      #graduate-model .funnel {
+        position: absolute;
+        left: 630px;
+        right: 106px;
+        top: 435px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        align-items: center;
+      }
+      #graduate-model .funnel-step { position: relative; text-align: left; }
+      #graduate-model .funnel-step:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        top: 45px;
+        right: 26px;
+        width: 68px;
+        height: 2px;
+        background: var(--gold);
+      }
+      #graduate-model .funnel-n {
+        color: var(--navy);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 84px;
+      }
+      #graduate-model .funnel-label {
+        margin-top: 18px;
+        color: var(--ink);
+        font-size: 27px;
+        text-transform: uppercase;
+        letter-spacing: .08em;
+      }
+      #graduate-model .trust-line {
+        position: absolute;
+        left: 630px;
+        right: 108px;
+        top: 670px;
+        padding-top: 30px;
+        border-top: 2px solid var(--navy);
+        color: var(--ink);
+        font-size: 29px;
+        line-height: 1.35;
+      }
+
+      /* Slide 6 */
+      #graduate-economics .economics {
+        position: absolute;
+        left: 132px;
+        right: 132px;
+        bottom: 126px;
+        height: 485px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 58px;
+        align-items: end;
+        border-bottom: 3px solid var(--navy);
+      }
+      #graduate-economics .year-column {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 0 24px 26px;
+      }
+      #graduate-economics .bar {
+        width: 100%;
+        border: 2px solid var(--navy);
+        background: var(--pale-blue);
+      }
+      #graduate-economics .bar.y1 { height: 160px; border-color: var(--gold); background: var(--pale-gold); }
+      #graduate-economics .bar.y2 { height: 250px; }
+      #graduate-economics .bar.y3 { height: 405px; background: var(--navy); }
+      #graduate-economics .bar-content {
+        padding: 24px;
+        color: var(--navy);
+        font-size: 28px;
+        line-height: 1.25;
+      }
+      #graduate-economics .bar.y3 .bar-content { color: var(--paper); }
+      #graduate-economics .bar-count {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 68px;
+        line-height: 1;
+      }
+      #graduate-economics .bar.y1 .bar-content { padding: 18px 22px; font-size: 25px; }
+      #graduate-economics .bar.y1 .bar-count { font-size: 58px; }
+      #graduate-economics .year-tag {
+        margin-top: 18px;
+        color: var(--gold);
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+      }
+      #graduate-economics .contribution {
+        position: absolute;
+        right: 138px;
+        top: 330px;
+        padding: 24px 32px;
+        background: var(--gold);
+        color: var(--paper);
+        font-size: 28px;
+        font-weight: 700;
+      }
+
+      /* Slide 7 */
+      #christian-schools .mn-wrap {
+        position: absolute;
+        left: 92px;
+        top: 365px;
+        width: 620px;
+        height: 590px;
+      }
+      #christian-schools .mn-map {
+        width: 100%;
+        height: 100%;
+      }
+      #christian-schools .school-dot { fill: var(--gold); }
+      #christian-schools .school-plan {
+        position: absolute;
+        left: 785px;
+        right: 108px;
+        top: 420px;
+      }
+      #christian-schools .school-goal {
+        display: flex;
+        align-items: baseline;
+        gap: 28px;
+      }
+      #christian-schools .school-goal-copy {
+        max-width: 460px;
+        color: var(--ink);
+        font-size: 31px;
+        line-height: 1.25;
+      }
+      #christian-schools .school-steps {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin-top: 64px;
+        border-top: 3px solid var(--navy);
+      }
+      #christian-schools .school-step {
+        min-height: 165px;
+        padding: 24px 24px 0 0;
+        color: var(--navy);
+        font-size: 26px;
+        line-height: 1.25;
+        border-right: 2px solid var(--pale-blue);
+      }
+      #christian-schools .school-step:last-child { border-right: 0; padding-left: 22px; }
+      #christian-schools .step-n {
+        display: block;
+        margin-bottom: 16px;
+        color: var(--gold);
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: .1em;
+      }
+
+      /* Slide 8 */
+      #partnerships .network {
+        position: absolute;
+        left: 215px;
+        right: 215px;
+        top: 350px;
+        height: 520px;
+      }
+      #partnerships .center-node {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 250px;
+        height: 250px;
+        margin: -125px 0 0 -125px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--navy);
+        color: var(--paper);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 82px;
+      }
+      #partnerships .partner-node {
+        position: absolute;
+        min-width: 245px;
+        padding: 22px 28px;
+        border: 2px solid var(--navy);
+        background: var(--paper);
+        color: var(--navy);
+        font-size: 26px;
+        font-weight: 700;
+        text-align: center;
+      }
+      #partnerships .p1 { left: 0; top: 32px; }
+      #partnerships .p2 { right: 0; top: 28px; }
+      #partnerships .p3 { left: 0; bottom: 34px; }
+      #partnerships .p4 { right: 0; bottom: 34px; }
+      #partnerships .p5 { left: 50%; top: -26px; margin-left: -160px; min-width: 320px; }
+      #partnerships .connector {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 560px;
+        height: 2px;
+        margin-left: -280px;
+        background: var(--pale-blue);
+      }
+      #partnerships .connector.vertical {
+        width: 2px;
+        height: 430px;
+        margin: -215px 0 0 -1px;
+      }
+      #partnerships .outcome-strip {
+        position: absolute;
+        left: 260px;
+        right: 440px;
+        bottom: 70px;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        color: var(--gold);
+        font-size: 21px;
+        font-weight: 700;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+
+      /* Slide 9 */
+      #advancement .orbit {
+        position: absolute;
+        left: 165px;
+        top: 340px;
+        width: 660px;
+        height: 660px;
+      }
+      #advancement .orbit-ring {
+        position: absolute;
+        inset: 0;
+        border: 3px solid var(--pale-blue);
+        border-radius: 50%;
+      }
+      #advancement .orbit-ring.inner { inset: 105px; border-color: var(--gold); }
+      #advancement .orbit-center {
+        position: absolute;
+        inset: 205px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--navy);
+        color: var(--paper);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 64px;
+        text-align: center;
+      }
+      #advancement .orbit-node {
+        position: absolute;
+        display: grid;
+        place-items: center;
+        width: 134px;
+        height: 134px;
+        border-radius: 50%;
+        background: var(--paper);
+        border: 3px solid var(--navy);
+        color: var(--navy);
+        font-size: 24px;
+        font-weight: 700;
+        text-align: center;
+      }
+      #advancement .on1 { left: 18px; top: 94px; }
+      #advancement .on2 { right: 4px; top: 140px; }
+      #advancement .on3 { left: 260px; bottom: -12px; }
+      #advancement .advancement-metrics {
+        position: absolute;
+        left: 920px;
+        right: 120px;
+        top: 415px;
+      }
+      #advancement .advancement-line {
+        display: grid;
+        grid-template-columns: 270px 1fr;
+        align-items: baseline;
+        padding: 22px 0;
+        border-bottom: 2px solid var(--pale-blue);
+      }
+      #advancement .advancement-number {
+        color: var(--gold);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 64px;
+      }
+      #advancement .advancement-copy {
+        color: var(--ink);
+        font-size: 29px;
+        line-height: 1.25;
+      }
+
+      /* Slide 10 */
+      #board-role .verbs {
+        position: absolute;
+        left: 108px;
+        right: 108px;
+        top: 388px;
+        bottom: 112px;
+        display: grid;
+        grid-template-columns: 1.1fr .9fr;
+        grid-template-rows: 1fr 1fr;
+        border-top: 3px solid var(--navy);
+        border-left: 3px solid var(--navy);
+      }
+      #board-role .verb {
+        position: relative;
+        padding: 34px 42px;
+        border-right: 3px solid var(--navy);
+        border-bottom: 3px solid var(--navy);
+      }
+      #board-role .verb-word {
+        color: var(--navy);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 78px;
+        line-height: 1;
+      }
+      #board-role .verb:nth-child(2) .verb-word,
+      #board-role .verb:nth-child(3) .verb-word { color: var(--gold); }
+      #board-role .verb-copy {
+        margin-top: 18px;
+        max-width: 650px;
+        color: var(--ink);
+        font-size: 27px;
+        line-height: 1.25;
+      }
+
+      /* Slide 11 */
+      #scorecard .score-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0;
+        margin-top: 80px;
+        border-top: 3px solid var(--navy);
+        border-bottom: 3px solid var(--navy);
+      }
+      #scorecard .score {
+        min-height: 300px;
+        padding: 34px 28px;
+        border-right: 2px solid var(--pale-blue);
+      }
+      #scorecard .score:last-child { border-right: 0; }
+      #scorecard .score-number {
+        color: var(--navy);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 72px;
+        line-height: 1;
+      }
+      #scorecard .score:nth-child(4) .score-number { color: var(--gold); }
+      #scorecard .score-copy {
+        margin-top: 24px;
+        color: var(--ink);
+        font-size: 26px;
+        line-height: 1.25;
+      }
+      #scorecard .closing-line {
+        margin-top: 70px;
+        color: var(--gold);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 58px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root-composition-marker"
+      data-composition-id="root"
+      data-start="0"
+      data-duration="88"
+      data-width="1920"
+      data-height="1080"
+      aria-hidden="true"
+      style="display: none"
+    ></div>
+    <script type="application/hyperframes-slideshow+json">
+      {
+        "slides": [
+          {"sceneId":"opening","notes":"Open with the thesis. This is a three-year plan, not a collection of disconnected fixes."},
+          {"sceneId":"starting-point","notes":"Name the pressure plainly: enrollment below plan, approximately $2.0 million projected deficit, and $572,000 of unbudgeted repairs. Bank covenants remain satisfied."},
+          {"sceneId":"three-year-path","notes":"Walk left to right. Year 1 stabilizes and launches. Year 2 scales what works. Year 3 sustains, reinvests, and reaches the NCU 2031 operating-margin target."},
+          {"sceneId":"property","notes":"Property is not a recurring-budget solution. Every transaction comes back to the Board with lender terms, transaction costs, mission impact, and a protected use of proceeds."},
+          {"sceneId":"graduate-model","notes":"The proposed graduate initiative is simple: a clear $340 price, recruitment through trusted ministry relationships, and a visible path from interested prospects to 75 enrolled students."},
+          {"sceneId":"graduate-economics","notes":"The model accepts a Year 1 launch investment. Annual contribution becomes positive in Year 2 and cumulative contribution becomes positive in Year 3. All figures remain illustrative until Finance validates them."},
+          {"sceneId":"christian-schools","notes":"This is the undergraduate complement to graduate growth: reach every Christian high school in Minnesota with a direct explanation of NCU's mission and disciplined follow-through. The three-year goal is 25 to 50 additional students attributed to this work."},
+          {"sceneId":"partnerships","notes":"A relationship enters the Board report only when it produces a signed agreement, an enrolled student, a sponsored seat, shared savings, service, or a gift."},
+          {"sceneId":"advancement","notes":"The Foundation Board or Advancement Council adds permanent fundraising capacity without confusing governance. The $3.15 million picture is illustrative and subject to legal, tax, and existing-entity review."},
+          {"sceneId":"board-role","notes":"Make the asks personal. The Board protects the institution, grows enrollment, builds fundraising capacity, and opens specific doors."},
+          {"sceneId":"scorecard","notes":"Close on observable results at 24 months. These are the measures that let the Board know whether the three-year plan is genuinely working."}
+        ],
+        "slideSequences": []
+      }
+    </script>
+
+    <div id="opening" class="scene" data-composition-id="opening" data-start="0" data-duration="8" data-label="Opening" data-width="1920" data-height="1080">
+      <section id="opening-surface" class="clip slide-surface" data-start="0" data-duration="8" data-track-index="1">
+        <div class="navy-field" data-layout-ignore></div>
+        <div class="opening-copy">
+          <div class="opening-kicker reveal">North Central University</div>
+          <h1 class="reveal">A three-year plan for stability, growth, and renewed reach</h1>
+          <p class="opening-sub reveal">Board of Regents companion presentation · August 2026</p>
+        </div>
+        <div class="opening-meta reveal">Executive Committee Report</div>
+        <div class="monogram ambient" data-layout-ignore>NCU</div>
+        <div class="gold-disc ambient" data-layout-ignore></div>
+      </section>
+    </div>
+
+    <div id="starting-point" class="scene" data-composition-id="starting-point" data-start="8" data-duration="8" data-label="Starting point" data-width="1920" data-height="1080">
+      <section id="starting-point-surface" class="clip slide-surface" data-start="8" data-duration="8" data-track-index="1">
+        <div class="frame">
+          <div class="topline reveal"><span>NCU · The starting point</span><span>02 / 11</span></div>
+          <div class="rule-grow"></div>
+          <h2 class="claim reveal">The pressure is real. So is the path forward.</h2>
+          <div class="facts">
+            <div class="fact reveal"><div class="metric">$2.0M</div><div class="fact-title">Approximate projected operating deficit</div></div>
+            <div class="fact reveal"><div class="metric gold">$572K</div><div class="fact-title">Unbudgeted repairs identified in the report</div></div>
+            <div class="fact reveal"><div class="label">Current standing</div><div class="metric small">Satisfied</div><div class="fact-title">Bank covenants remain satisfied</div></div>
+          </div>
+          <div class="footnote"><span>Enrollment is below plan; certified Fall figures still need to be inserted.</span><span>Reported / calculated</span></div>
+        </div>
+        <div class="ghost ambient" style="right:-40px; bottom:-115px" data-layout-ignore>01</div>
+      </section>
+    </div>
+
+    <div id="three-year-path" class="scene" data-composition-id="three-year-path" data-start="16" data-duration="8" data-label="Three-year path" data-width="1920" data-height="1080">
+      <section id="three-year-path-surface" class="clip slide-surface" data-start="16" data-duration="8" data-track-index="1">
+        <div class="frame">
+          <div class="topline reveal"><span>NCU · The path</span><span>03 / 11</span></div>
+          <div class="rule-grow"></div>
+          <h2 class="claim compact reveal">Three years of steady work—not one dramatic move.</h2>
+          <div class="path rule-grow"></div>
+          <div class="year y1 reveal"><div class="year-number" data-layout-ignore>1</div><div class="dot"></div><div class="year-title">Stabilize + launch</div><div class="year-copy">Certify the financial picture, decide which properties serve the mission, launch graduate growth, and organize advancement.</div></div>
+          <div class="year y2 reveal"><div class="year-number" data-layout-ignore>2</div><div class="dot"></div><div class="year-title">Scale what works</div><div class="year-copy">Reach 180 active graduate students, deepen five anchor partnerships, and cut the operating loss materially.</div></div>
+          <div class="year y3 reveal"><div class="year-number" data-layout-ignore>3</div><div class="dot"></div><div class="year-title">Sustain + reinvest</div><div class="year-copy">Reach 320 active graduate students, restore recurring strength, and reinvest in student access and retention.</div></div>
+          <div class="footnote"><span>Year 3 target: at least +0.5% net operating margin.</span><span>NCU 2031 planning target</span></div>
+        </div>
+      </section>
+    </div>
+
+    <div id="property" class="scene" data-composition-id="property" data-start="24" data-duration="8" data-label="Property and financial strength" data-width="1920" data-height="1080">
+      <section id="property-surface" class="clip slide-surface" data-start="24" data-duration="8" data-track-index="1">
+        <div class="frame">
+          <div class="topline reveal"><span>NCU · Financial strength</span><span>04 / 11</span></div>
+          <div class="rule-grow"></div>
+          <h2 class="claim compact reveal">Property decisions should strengthen NCU for the long term.</h2>
+          <div class="property-grid">
+            <div class="range-panel reveal">
+              <div class="range-label">Seven broker price opinions</div>
+              <div class="range-number">$8.95M—$11.12M</div>
+              <div class="range-note">Planning evidence, not offers or net proceeds. A reported $2M—$3M may be required for lender repayment.</div>
+            </div>
+            <div class="use-list">
+              <div class="use-row reveal"><div class="use-n">1</div><div class="use-copy">Reduce debt as required by the lender</div></div>
+              <div class="use-row reveal"><div class="use-n">2</div><div class="use-copy">Pay transaction and transition costs</div></div>
+              <div class="use-row reveal"><div class="use-n">3</div><div class="use-copy">Fund urgent capital needs</div></div>
+              <div class="use-row reveal"><div class="use-n">4</div><div class="use-copy">Protect the remainder for the long term</div></div>
+            </div>
+          </div>
+          <div class="footnote"><span>No one-time property proceeds should be counted as recurring operating revenue.</span><span>Board principle</span></div>
+        </div>
+        <div class="ghost ambient" style="left:-45px; bottom:-130px" data-layout-ignore>$</div>
+      </section>
+    </div>
+
+    <div id="graduate-model" class="scene" data-composition-id="graduate-model" data-start="32" data-duration="8" data-label="Graduate recruitment model" data-width="1920" data-height="1080">
+      <section id="graduate-model-surface" class="clip slide-surface" data-start="32" data-duration="8" data-track-index="1">
+        <div class="frame">
+          <div class="topline reveal"><span>NCU · Graduate growth</span><span>05 / 11</span></div>
+          <div class="rule-grow"></div>
+          <h2 class="claim compact reveal">Graduate growth begins with a clear offer and trusted relationships.</h2>
+          <div class="price-lockup reveal"><div class="label">Proposed ministry rate</div><div class="metric small">$340</div><div class="metric-caption">per credit · limited cohort · CFO and Provost approval</div></div>
+          <div class="funnel">
+            <div class="funnel-step reveal"><div class="funnel-n">600</div><div class="funnel-label">Interested</div></div>
+            <div class="funnel-step reveal"><div class="funnel-n">225</div><div class="funnel-label">Apply</div></div>
+            <div class="funnel-step reveal"><div class="funnel-n">120</div><div class="funnel-label">Admit</div></div>
+            <div class="funnel-step reveal"><div class="funnel-n">75</div><div class="funnel-label">Enroll</div></div>
+          </div>
+          <div class="trust-line reveal">Churches · districts · ministers · alumni · missions · employers</div>
+          <div class="footnote"><span>Published 2026–2027 graduate tuition: $680 per credit plus fees.</span><span>Year 1 planning model</span></div>
+        </div>
+      </section>
+    </div>
+
+    <div id="graduate-economics" class="scene" data-composition-id="graduate-economics" data-start="40" data-duration="8" data-label="Graduate economics" data-width="1920" data-height="1080">
+      <section id="graduate-economics-surface" class="clip slide-surface" data-start="40" data-duration="8" data-track-index="1">
+        <div class="frame">
+          <div class="topline reveal"><span>NCU · Three-year graduate model</span><span>06 / 11</span></div>
+          <div class="rule-grow"></div>
+          <h2 class="claim compact reveal">By Year 3, the graduate initiative can pay back its launch investment.</h2>
+          <div class="contribution reveal">Year 3 annual contribution: +$410K</div>
+          <div class="economics">
+            <div class="year-column reveal"><div class="bar y1"><div class="bar-content"><div class="bar-count">75</div>active students<br>$291K tuition</div></div><div class="year-tag">Year 1 · launch investment</div></div>
+            <div class="year-column reveal"><div class="bar y2"><div class="bar-content"><div class="bar-count">180</div>active students<br>$698K tuition</div></div><div class="year-tag">Year 2 · annual positive</div></div>
+            <div class="year-column reveal"><div class="bar y3"><div class="bar-content"><div class="bar-count">320</div>active students<br>$1.24M tuition</div></div><div class="year-tag">Year 3 · cumulative positive</div></div>
+          </div>
+          <div class="footnote"><span>Illustrative model; Finance must validate price, costs, collection, staffing, and academic capacity.</span><span>Cumulative contribution in Year 3: +$367K</span></div>
+        </div>
+      </section>
+    </div>
+
+    <div id="christian-schools" class="scene" data-composition-id="christian-schools" data-start="48" data-duration="8" data-label="Christian high school recruitment" data-width="1920" data-height="1080">
+      <section id="christian-schools-surface" class="clip slide-surface" data-start="48" data-duration="8" data-track-index="1">
+        <div class="frame">
+          <div class="topline reveal"><span>NCU · Undergraduate reach</span><span>07 / 11</span></div>
+          <div class="rule-grow"></div>
+          <h2 class="claim compact reveal">Every Christian high school in Minnesota should hear NCU’s mission directly.</h2>
+          <div class="mn-wrap reveal" data-layout-ignore>
+            <svg class="mn-map" viewBox="0 0 420 520" role="img" aria-label="Stylized outline of Minnesota with school locations">
+              <path d="M88 44 L254 44 L254 24 L278 35 L310 35 L300 60 L342 74 L330 112 L358 132 L336 158 L350 188 L326 220 L338 258 L322 300 L350 332 L316 362 L302 412 L262 466 L88 466 L88 78 L62 78 L70 48 Z" fill="#DDE6F0" stroke="#1F3864" stroke-width="5" />
+              <circle class="school-dot" cx="142" cy="112" r="8"/><circle class="school-dot" cx="214" cy="92" r="8"/><circle class="school-dot" cx="285" cy="128" r="8"/><circle class="school-dot" cx="122" cy="182" r="8"/><circle class="school-dot" cx="198" cy="176" r="8"/><circle class="school-dot" cx="276" cy="214" r="8"/><circle class="school-dot" cx="146" cy="260" r="8"/><circle class="school-dot" cx="222" cy="258" r="8"/><circle class="school-dot" cx="296" cy="294" r="8"/><circle class="school-dot" cx="130" cy="340" r="8"/><circle class="school-dot" cx="202" cy="350" r="8"/><circle class="school-dot" cx="268" cy="382" r="8"/><circle class="school-dot" cx="154" cy="420" r="8"/>
+            </svg>
+          </div>
+          <div class="school-plan">
+            <div class="school-goal reveal"><div class="metric">25–50</div><div class="school-goal-copy">additional undergraduates over three years, attributed to this outreach</div></div>
+            <div class="school-steps">
+              <div class="school-step reveal"><span class="step-n">01</span>One verified statewide school list</div>
+              <div class="school-step reveal"><span class="step-n">02</span>A named relationship owner for every school</div>
+              <div class="school-step reveal"><span class="step-n">03</span>Campus, virtual, counselor, and pastor engagement</div>
+              <div class="school-step reveal"><span class="step-n">04</span>Follow-through from inquiry to deposit</div>
+            </div>
+          </div>
+          <div class="footnote"><span>Track school source, inquiry, application, deposit, start, and net tuition.</span><span>Three-year undergraduate initiative</span></div>
+        </div>
+      </section>
+    </div>
+
+    <div id="partnerships" class="scene" data-composition-id="partnerships" data-start="56" data-duration="8" data-label="Partnership outcomes" data-width="1920" data-height="1080">
+      <section id="partnerships-surface" class="clip slide-surface" data-start="56" data-duration="8" data-track-index="1">
+        <div class="frame">
+          <div class="topline reveal"><span>NCU · Partnerships</span><span>08 / 11</span></div>
+          <div class="rule-grow"></div>
+          <h2 class="claim compact reveal">Relationships count when they produce students, service, or support.</h2>
+          <div class="network">
+            <div class="connector" data-layout-ignore></div><div class="connector vertical" data-layout-ignore></div>
+            <div class="partner-node p1 reveal">River Valley</div>
+            <div class="partner-node p2 reveal">Substance Church</div>
+            <div class="partner-node p3 reveal">Puerto Rico District</div>
+            <div class="partner-node p4 reveal">Harris Institute</div>
+            <div class="partner-node p5 reveal">AG · NBF · Districts · Missions</div>
+            <div class="center-node reveal">NCU</div>
+          </div>
+          <div class="outcome-strip reveal"><span>Signed agreement</span><span>Student starts</span><span>Sponsored seats</span><span>Shared savings</span><span>Gifts</span></div>
+        </div>
+      </section>
+    </div>
+
+    <div id="advancement" class="scene" data-composition-id="advancement" data-start="64" data-duration="8" data-label="Permanent fundraising capacity" data-width="1920" data-height="1080">
+      <section id="advancement-surface" class="clip slide-surface" data-start="64" data-duration="8" data-track-index="1">
+        <div class="frame">
+          <div class="topline reveal"><span>NCU · Advancement</span><span>09 / 11</span></div>
+          <div class="rule-grow"></div>
+          <h2 class="claim compact reveal">A permanent advancement group can widen the circle of people investing in NCU.</h2>
+          <div class="orbit ambient" data-layout-ignore>
+            <div class="orbit-ring"></div><div class="orbit-ring inner"></div>
+            <div class="orbit-center">NCU</div>
+            <div class="orbit-node on1">Alumni + pastors</div><div class="orbit-node on2">Business + civic leaders</div><div class="orbit-node on3">Donors + foundations</div>
+          </div>
+          <div class="advancement-metrics">
+            <div class="advancement-line reveal"><div class="advancement-number">12–15</div><div class="advancement-copy">founding members with three-year staggered terms</div></div>
+            <div class="advancement-line reveal"><div class="advancement-number">$25K</div><div class="advancement-copy">given or helped secure by each member annually</div></div>
+            <div class="advancement-line reveal"><div class="advancement-number">$3.15M</div><div class="advancement-copy">illustrative three-year total before grants, planned gifts, or property proceeds</div></div>
+          </div>
+          <div class="footnote"><span>Foundation Board or, if legally preferable, a President’s Advancement Council.</span><span>Subject to legal, tax, bylaws, and existing-entity review</span></div>
+        </div>
+      </section>
+    </div>
+
+    <div id="board-role" class="scene" data-composition-id="board-role" data-start="72" data-duration="8" data-label="Board role" data-width="1920" data-height="1080">
+      <section id="board-role-surface" class="clip slide-surface" data-start="72" data-duration="8" data-track-index="1">
+        <div class="frame">
+          <div class="topline reveal"><span>NCU · Board action</span><span>10 / 11</span></div>
+          <div class="rule-grow"></div>
+          <h2 class="claim compact reveal">The Board’s role is clear—and personal.</h2>
+          <div class="verbs">
+            <div class="verb reveal"><div class="verb-word">Protect</div><div class="verb-copy">Require full financial evidence before property or spending decisions.</div></div>
+            <div class="verb reveal"><div class="verb-word">Grow</div><div class="verb-copy">Endorse the graduate initiative and statewide Christian-school outreach.</div></div>
+            <div class="verb reveal"><div class="verb-word">Build</div><div class="verb-copy">Help form permanent fundraising capacity with clear safeguards.</div></div>
+            <div class="verb reveal"><div class="verb-word">Open</div><div class="verb-copy">Make three useful introductions and stay with the relationship.</div></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="scorecard" class="scene" data-composition-id="scorecard" data-start="80" data-duration="8" data-label="24-month scorecard" data-width="1920" data-height="1080">
+      <section id="scorecard-surface" class="clip slide-surface" data-start="80" data-duration="8" data-track-index="1">
+        <div class="frame">
+          <div class="topline reveal"><span>NCU · What success looks like</span><span>11 / 11</span></div>
+          <div class="rule-grow"></div>
+          <h2 class="claim compact reveal">At 24 months, progress should be unmistakable.</h2>
+          <div class="score-grid">
+            <div class="score reveal"><div class="score-number">50%</div><div class="score-copy">or greater reduction in the operating loss from the certified starting point</div></div>
+            <div class="score reveal"><div class="score-number">180</div><div class="score-copy">active graduate initiative students and positive annual contribution</div></div>
+            <div class="score reveal"><div class="score-number">5</div><div class="score-copy">active partners producing students, sponsorship, service, or savings</div></div>
+            <div class="score reveal"><div class="score-number">$1.6M</div><div class="score-copy">member and other signed campaign commitments</div></div>
+            <div class="score reveal"><div class="score-number">+3</div><div class="score-copy">retention points, plus 15–30 students enrolled or committed through Christian-school outreach</div></div>
+          </div>
+          <div class="closing-line reveal">Stability. Growth. Renewed reach.</div>
+          <div class="footnote"><span>Cash, commitments, student starts, and recurring results are reported separately.</span><span>24-month Board scorecard</span></div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const scenes = [
+        ["opening", 0], ["starting-point", 8], ["three-year-path", 16], ["property", 24],
+        ["graduate-model", 32], ["graduate-economics", 40], ["christian-schools", 48],
+        ["partnerships", 56], ["advancement", 64], ["board-role", 72], ["scorecard", 80]
+      ];
+
+      scenes.forEach(([id, start]) => {
+        const tl = gsap.timeline({ paused: true });
+        const scene = document.getElementById(id);
+        const reveals = scene.querySelectorAll(".reveal");
+        const rules = scene.querySelectorAll(".rule-grow");
+        const ambient = scene.querySelectorAll(".ambient");
+
+        if (rules.length) {
+          tl.fromTo(rules, { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.7, ease: "power2.out" }, start + 0.1);
+        }
+        if (reveals.length) {
+          tl.fromTo(reveals, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.72, stagger: 0.09, ease: "power3.out" }, start + 0.2);
+        }
+        if (ambient.length) {
+          tl.fromTo(ambient, { opacity: 0.55 }, { opacity: 0.92, duration: 6.8, ease: "sine.inOut" }, start + 0.5);
+        }
+        window.__timelines[id] = tl;
+      });
+
+      // The standalone slideshow wrapper drives one continuous, seekable
+      // timeline. Individual scene timelines remain available for HyperFrames
+      // validation and are synchronized whenever the root playhead moves.
+      const rootTimeline = gsap.timeline({ paused: true });
+      rootTimeline.to({}, { duration: 88 });
+      window.__timelines.root = rootTimeline;
+
+      function updateSceneVisibility(time) {
+        scenes.forEach(([id, start]) => {
+          const scene = document.getElementById(id);
+          const active = time >= start && time < start + 8;
+          scene.style.opacity = active ? "1" : "0";
+          scene.style.visibility = active ? "visible" : "hidden";
+          scene.style.pointerEvents = active ? "auto" : "none";
+          const sceneTimeline = window.__timelines[id];
+          if (active && sceneTimeline) sceneTimeline.seek(time, false);
+        });
+      }
+
+      window.__hfSetTime = updateSceneVisibility;
+      rootTimeline.eventCallback("onUpdate", () => updateSceneVisibility(rootTimeline.time()));
+      scenes.forEach(([id]) => {
+        const timeline = window.__timelines[id];
+        if (timeline) timeline.eventCallback("onUpdate", () => updateSceneVisibility(timeline.time()));
+      });
+      rootTimeline.seek(4, false);
+      updateSceneVisibility(4);
+
+      // Tell the standalone presenter shell how scene IDs map to the shared
+      // timeline. This is what enables reliable Next/Previous navigation.
+      (function postSceneTimeline() {
+        const timelineScenes = scenes.map(([id, start]) => ({ id, start, duration: 8 }));
+        function postTimeline() {
+          parent.postMessage({
+            source: "hf-preview",
+            type: "timeline",
+            durationInFrames: 88 * 30,
+            scenes: timelineScenes
+          }, "*");
+        }
+        if (document.readyState === "complete") {
+          setTimeout(postTimeline, 300);
+        } else {
+          window.addEventListener("load", () => setTimeout(postTimeline, 300));
+        }
+      })();
+    </script>
+  </body>
+</html>
