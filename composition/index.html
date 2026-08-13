@@ -600,10 +600,10 @@
       /* Slide 9 */
       #advancement .orbit {
         position: absolute;
-        left: 165px;
-        top: 340px;
-        width: 660px;
-        height: 660px;
+        left: 175px;
+        top: 330px;
+        width: 620px;
+        height: 620px;
       }
       #advancement .orbit-ring {
         position: absolute;
@@ -611,10 +611,10 @@
         border: 3px solid var(--pale-blue);
         border-radius: 50%;
       }
-      #advancement .orbit-ring.inner { inset: 105px; border-color: var(--gold); }
+      #advancement .orbit-ring.inner { inset: 100px; border-color: var(--gold); }
       #advancement .orbit-center {
         position: absolute;
-        inset: 205px;
+        inset: 190px;
         display: grid;
         place-items: center;
         border-radius: 50%;
@@ -628,19 +628,23 @@
         position: absolute;
         display: grid;
         place-items: center;
-        width: 134px;
-        height: 134px;
+        width: 170px;
+        height: 170px;
+        box-sizing: border-box;
+        padding: 22px 18px;
         border-radius: 50%;
         background: var(--paper);
         border: 3px solid var(--navy);
         color: var(--navy);
-        font-size: 24px;
+        font-size: 22px;
         font-weight: 700;
+        line-height: 1.08;
         text-align: center;
+        z-index: 2;
       }
-      #advancement .on1 { left: 18px; top: 94px; }
-      #advancement .on2 { right: 4px; top: 140px; }
-      #advancement .on3 { left: 260px; bottom: -12px; }
+      #advancement .on1 { left: -4px; top: 65px; }
+      #advancement .on2 { right: -7px; top: 110px; }
+      #advancement .on3 { left: 225px; bottom: -4px; }
       #advancement .advancement-metrics {
         position: absolute;
         left: 920px;
@@ -755,7 +759,7 @@
           {"sceneId":"starting-point","notes":"Name the pressure plainly: enrollment below plan, approximately $2.0 million projected deficit, and $572,000 of unbudgeted repairs. Bank covenants remain satisfied."},
           {"sceneId":"three-year-path","notes":"Walk left to right. Year 1 stabilizes and launches. Year 2 scales what works. Year 3 sustains, reinvests, and reaches the NCU 2031 operating-margin target."},
           {"sceneId":"property","notes":"Property is not a recurring-budget solution. Every transaction comes back to the Board with lender terms, transaction costs, mission impact, and a protected use of proceeds."},
-          {"sceneId":"graduate-model","notes":"The proposed graduate initiative is simple: a clear $340 price, recruitment through trusted ministry relationships, and a visible path from interested prospects to 75 enrolled students."},
+          {"sceneId":"graduate-model","notes":"The proposed graduate initiative is simple: a clear $340 price, recruitment through trusted ministry relationships, and a visible path from interested prospects to 60 enrolled students."},
           {"sceneId":"graduate-economics","notes":"The model accepts a Year 1 launch investment. Annual contribution becomes positive in Year 2 and cumulative contribution becomes positive in Year 3. All figures remain illustrative until Finance validates them."},
           {"sceneId":"christian-schools","notes":"This is the undergraduate complement to graduate growth: reach every Christian high school in Minnesota with a direct explanation of NCU's mission and disciplined follow-through. The three-year goal is 25 to 50 additional students attributed to this work."},
           {"sceneId":"partnerships","notes":"A relationship enters the Board report only when it produces a signed agreement, an enrolled student, a sponsored seat, shared savings, service, or a gift."},
@@ -806,8 +810,8 @@
           <h2 class="claim compact reveal">Three years of steady work—not one dramatic move.</h2>
           <div class="path rule-grow"></div>
           <div class="year y1 reveal"><div class="year-number" data-layout-ignore>1</div><div class="dot"></div><div class="year-title">Stabilize + launch</div><div class="year-copy">Certify the financial picture, decide which properties serve the mission, launch graduate growth, and organize advancement.</div></div>
-          <div class="year y2 reveal"><div class="year-number" data-layout-ignore>2</div><div class="dot"></div><div class="year-title">Scale what works</div><div class="year-copy">Reach 180 active graduate students, deepen five anchor partnerships, and cut the operating loss materially.</div></div>
-          <div class="year y3 reveal"><div class="year-number" data-layout-ignore>3</div><div class="dot"></div><div class="year-title">Sustain + reinvest</div><div class="year-copy">Reach 320 active graduate students, restore recurring strength, and reinvest in student access and retention.</div></div>
+          <div class="year y2 reveal"><div class="year-number" data-layout-ignore>2</div><div class="dot"></div><div class="year-title">Scale what works</div><div class="year-copy">Reach 150 active graduate students, deepen five anchor partnerships, and cut the operating loss materially.</div></div>
+          <div class="year y3 reveal"><div class="year-number" data-layout-ignore>3</div><div class="dot"></div><div class="year-title">Sustain + reinvest</div><div class="year-copy">Reach 250 active graduate students, restore recurring strength, and reinvest in student access and retention.</div></div>
           <div class="footnote"><span>Year 3 target: at least +0.5% net operating margin.</span><span>NCU 2031 planning target</span></div>
         </div>
       </section>
@@ -849,7 +853,7 @@
             <div class="funnel-step reveal"><div class="funnel-n">600</div><div class="funnel-label">Interested</div></div>
             <div class="funnel-step reveal"><div class="funnel-n">225</div><div class="funnel-label">Apply</div></div>
             <div class="funnel-step reveal"><div class="funnel-n">120</div><div class="funnel-label">Admit</div></div>
-            <div class="funnel-step reveal"><div class="funnel-n">75</div><div class="funnel-label">Enroll</div></div>
+            <div class="funnel-step reveal"><div class="funnel-n">60</div><div class="funnel-label">Enroll</div></div>
           </div>
           <div class="trust-line reveal">Churches · districts · ministers · alumni · missions · employers</div>
           <div class="footnote"><span>Published 2026–2027 graduate tuition: $680 per credit plus fees.</span><span>Year 1 planning model</span></div>
@@ -863,13 +867,13 @@
           <div class="topline reveal"><span>NCU · Three-year graduate model</span><span>06 / 11</span></div>
           <div class="rule-grow"></div>
           <h2 class="claim compact reveal">By Year 3, the graduate initiative can pay back its launch investment.</h2>
-          <div class="contribution reveal">Year 3 annual contribution: +$410K</div>
+          <div class="contribution reveal">Year 3 annual contribution: +$254K</div>
           <div class="economics">
-            <div class="year-column reveal"><div class="bar y1"><div class="bar-content"><div class="bar-count">75</div>active students<br>$291K tuition</div></div><div class="year-tag">Year 1 · launch investment</div></div>
-            <div class="year-column reveal"><div class="bar y2"><div class="bar-content"><div class="bar-count">180</div>active students<br>$698K tuition</div></div><div class="year-tag">Year 2 · annual positive</div></div>
-            <div class="year-column reveal"><div class="bar y3"><div class="bar-content"><div class="bar-count">320</div>active students<br>$1.24M tuition</div></div><div class="year-tag">Year 3 · cumulative positive</div></div>
+            <div class="year-column reveal"><div class="bar y1"><div class="bar-content"><div class="bar-count">60</div>active students<br>$233K tuition</div></div><div class="year-tag">Year 1 · launch investment</div></div>
+            <div class="year-column reveal"><div class="bar y2"><div class="bar-content"><div class="bar-count">150</div>active students<br>$581K tuition</div></div><div class="year-tag">Year 2 · annual positive</div></div>
+            <div class="year-column reveal"><div class="bar y3"><div class="bar-content"><div class="bar-count">250</div>active students<br>$969K tuition</div></div><div class="year-tag">Year 3 · cumulative positive</div></div>
           </div>
-          <div class="footnote"><span>Illustrative model; Finance must validate price, costs, collection, staffing, and academic capacity.</span><span>Cumulative contribution in Year 3: +$367K</span></div>
+          <div class="footnote"><span>Illustrative model; Finance must validate price, costs, collection, staffing, and academic capacity.</span><span>Cumulative contribution in Year 3: +$115K</span></div>
         </div>
       </section>
     </div>
@@ -881,9 +885,9 @@
           <div class="rule-grow"></div>
           <h2 class="claim compact reveal">Every Christian high school in Minnesota should hear NCU’s mission directly.</h2>
           <div class="mn-wrap reveal" data-layout-ignore>
-            <svg class="mn-map" viewBox="0 0 420 520" role="img" aria-label="Stylized outline of Minnesota with school locations">
-              <path d="M88 44 L254 44 L254 24 L278 35 L310 35 L300 60 L342 74 L330 112 L358 132 L336 158 L350 188 L326 220 L338 258 L322 300 L350 332 L316 362 L302 412 L262 466 L88 466 L88 78 L62 78 L70 48 Z" fill="#DDE6F0" stroke="#1F3864" stroke-width="5" />
-              <circle class="school-dot" cx="142" cy="112" r="8"/><circle class="school-dot" cx="214" cy="92" r="8"/><circle class="school-dot" cx="285" cy="128" r="8"/><circle class="school-dot" cx="122" cy="182" r="8"/><circle class="school-dot" cx="198" cy="176" r="8"/><circle class="school-dot" cx="276" cy="214" r="8"/><circle class="school-dot" cx="146" cy="260" r="8"/><circle class="school-dot" cx="222" cy="258" r="8"/><circle class="school-dot" cx="296" cy="294" r="8"/><circle class="school-dot" cx="130" cy="340" r="8"/><circle class="school-dot" cx="202" cy="350" r="8"/><circle class="school-dot" cx="268" cy="382" r="8"/><circle class="school-dot" cx="154" cy="420" r="8"/>
+            <svg class="mn-map" viewBox="0 0 420 520" role="img" aria-label="Minnesota outline with school locations">
+              <path d="M 307.6 456.2 L 69.5 456.2 L 69.5 336.3 L 66.4 331.1 L 58.6 328.4 L 51.1 315.8 L 63.6 301.5 L 64.9 283.9 L 62.8 267.5 L 57.3 260.2 L 53.8 247.5 L 53.6 235.4 L 55.8 227.8 L 51.9 222.4 L 51.4 182.9 L 38.0 146.6 L 39.5 136.3 L 37.2 130.0 L 38.8 124.5 L 37.2 124.2 L 38.9 121.4 L 36.6 118.6 L 40.5 110.5 L 36.0 101.7 L 34.0 89.5 L 128.6 89.5 L 128.6 63.8 L 137.5 64.7 L 143.9 68.0 L 149.9 97.2 L 149.5 103.9 L 151.7 106.5 L 160.5 109.9 L 167.8 108.9 L 170.9 112.8 L 188.1 114.1 L 190.4 121.7 L 205.3 119.7 L 205.4 116.6 L 215.0 113.2 L 228.6 114.0 L 243.1 119.9 L 243.5 122.5 L 239.6 125.2 L 251.3 128.5 L 250.7 132.6 L 255.2 141.4 L 259.8 139.6 L 258.1 135.0 L 260.1 132.4 L 269.5 132.2 L 273.9 140.6 L 285.0 142.8 L 285.1 148.5 L 292.1 148.9 L 291.7 153.2 L 305.4 150.9 L 322.7 139.7 L 324.8 140.1 L 328.8 150.0 L 356.8 148.6 L 367.7 156.9 L 386.0 155.8 L 327.6 182.4 L 296.5 213.8 L 268.1 236.4 L 271.3 242.4 L 266.7 239.6 L 262.7 242.5 L 262.6 246.0 L 258.8 244.9 L 258.7 284.5 L 256.0 288.5 L 252.5 287.9 L 239.8 296.5 L 236.3 305.2 L 232.5 308.3 L 231.8 317.8 L 237.0 318.4 L 242.6 326.7 L 237.4 337.1 L 238.4 348.5 L 235.5 352.1 L 237.9 360.4 L 235.3 372.9 L 247.1 385.0 L 256.7 386.0 L 261.5 393.2 L 273.4 398.5 L 277.7 409.5 L 290.6 420.8 L 297.8 423.1 L 306.4 437.9 L 305.3 448.6 L 307.6 456.2 Z" fill="#DDE6F0" stroke="#1F3864" stroke-width="5" />
+              <circle class="school-dot" cx="90" cy="112" r="8"/><circle class="school-dot" cx="142" cy="126" r="8"/><circle class="school-dot" cx="215" cy="138" r="8"/><circle class="school-dot" cx="305" cy="157" r="8"/><circle class="school-dot" cx="95" cy="178" r="8"/><circle class="school-dot" cx="190" cy="180" r="8"/><circle class="school-dot" cx="270" cy="190" r="8"/><circle class="school-dot" cx="100" cy="240" r="8"/><circle class="school-dot" cx="195" cy="245" r="8"/><circle class="school-dot" cx="250" cy="255" r="8"/><circle class="school-dot" cx="105" cy="310" r="8"/><circle class="school-dot" cx="205" cy="310" r="8"/><circle class="school-dot" cx="135" cy="385" r="8"/><circle class="school-dot" cx="220" cy="385" r="8"/><circle class="school-dot" cx="195" cy="430" r="8"/>
             </svg>
           </div>
           <div class="school-plan">
@@ -965,7 +969,7 @@
           <h2 class="claim compact reveal">At 24 months, progress should be unmistakable.</h2>
           <div class="score-grid">
             <div class="score reveal"><div class="score-number">50%</div><div class="score-copy">or greater reduction in the operating loss from the certified starting point</div></div>
-            <div class="score reveal"><div class="score-number">180</div><div class="score-copy">active graduate initiative students and positive annual contribution</div></div>
+            <div class="score reveal"><div class="score-number">150</div><div class="score-copy">active graduate initiative students and positive annual contribution</div></div>
             <div class="score reveal"><div class="score-number">5</div><div class="score-copy">active partners producing students, sponsorship, service, or savings</div></div>
             <div class="score reveal"><div class="score-number">$1.6M</div><div class="score-copy">member and other signed campaign commitments</div></div>
             <div class="score reveal"><div class="score-number">+3</div><div class="score-copy">retention points, plus 15–30 students enrolled or committed through Christian-school outreach</div></div>
